@@ -6,7 +6,7 @@
 
 sleep 10 && open "http://localhost:4000/" &
 
-docker-compose up --force-recreate --exit-code-from page "$@" || {
+docker-compose up --build --force-recreate --exit-code-from page "$@" || {
     jobs
     kill %-
 }

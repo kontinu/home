@@ -103,8 +103,9 @@ header img {
 
 header .intro-text .name {
     display: block;
-    text-transform: uppercase;
+    text-transform: lowercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    /* font-family: 'League Spartan Bold', arial; */
     font-size: 2em;
     font-weight: 700;
 }
@@ -135,6 +136,7 @@ header .intro-text .skills {
         -webkit-transition: padding .3s;
         -moz-transition: padding .3s;
         transition: padding .3s;
+        line-height: 2em;
 
     }
 
@@ -146,7 +148,7 @@ header .intro-text .skills {
     }
     /*agregamos css manual para el brand*/
     .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
-        color: #f18780;
+        color: #{{site.color.accents}};
         background-color: transparent;
     }
 
@@ -155,7 +157,12 @@ header .intro-text .skills {
     }
 
     .navbar-fixed-top.navbar-shrink .navbar-brand {
-        font-size: 1.5em;
+        font-size: 2em;
+        display:flex;
+        flex-wrap:wrap;
+        width:4em;
+        line-height: 0.8em;
+        margin-top: 0px;
 
     }
 
@@ -172,7 +179,7 @@ a, a:hover, a:focus, a:active, a.active {
 }
 /* Dropdown Button */
 .dropdown {
-    /* background-color: #f18780; */
+    /* background-color: #{{site.color.accents}}; */
     color:#ffffff;
     padding: 16px;
     font-size: 16px;
@@ -211,13 +218,13 @@ a, a:hover, a:focus, a:active, a.active {
   }
 
   /* Change color of dropdown links on hover */
-  .dropdown-content a:hover {background-color: #f18780;}
+  .dropdown-content a:hover {background-color: #{{site.color.accents}};}
 
   /* Show the dropdown menu on hover */
   .dropdown:hover .dropdown-content {display: block; }
 
   /* Change the background color of the dropdown button when the dropdown content is shown */
-  .dropdown:hover .dropdown {background-color: #f18780;}
+  .dropdown:hover .dropdown {background-color: #{{site.color.accents}};}
 
 /*ocano 11/02/19*/
 
@@ -345,9 +352,16 @@ section.success {
 .btn-outline:active,
 .btn-outline.active {
     border: solid 2px #fff;
-    color: #{{ site.color.primary }};
+    color: #{{site.color.accents}};
     background: #fff;
 }
+
+.btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open>.dropdown-toggle.btn-success {
+    border: solid 2px #fff;
+    color: #fff;
+    background: #{{site.color.accents}};
+}
+
 
 .floating-label-form-group {
     position: relative;
@@ -406,7 +420,8 @@ form .row:first-child .floating-label-form-group {
 }
 
 footer {
-    color: #fff;
+  background-color: #{{ site.color.primary }};
+  color: #fff;
 
 }
 

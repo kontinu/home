@@ -2,12 +2,15 @@
 title: Kontinu | Devops Guatemala
 
 navbar_brand: Kontinu
+images:
+  logo: kontinu-badge-logo.png
+  header_logo: kontinu-badge-logo.png
 
-email: contact@kontinu.io
+email: info@kontinu.io
 url: "/"
 description: "Kontinu - Devops Guatemala - Consultoria Devops en Guatemala, nos especializamos en: Cloud, Docker, SCRUM, Continuous Delivery, Continuous Integration"
 
-skills: "Consultoria Devops"
+skills: "Consultoria Devops y Bootcamps"
 meta_author: Cano Marcos
 
 # Google webmaster tools
@@ -16,6 +19,7 @@ google_verify: _R6q2LUK8VcUpkmxSdJQJGFfEb6RMjlVEIkDA8zpyc0
 
 # https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
 bing_verify:
+
 
 
 # analytics
@@ -43,10 +47,11 @@ disqus_shortname: myshortname
 # salmon - azul - azulgris
 # e49695  003366 263340
 color:
-  primary: 808184 #FF7E79 #80B3FF
-  primary-rgb: "255,242,241" #"128,179,255"
-  secondary: 1d4063 #FD6E8A
+  primary: 1E293B #374867 ; #3241E4; #FF7E79 #80B3FF
+  primary-rgb: 30, 41, 59 # "255,242,241" #"128,179,255"
+  secondary: 1E293B #FD6E8A
   secondary-dark: 243342 #A2122F
+  accents: 59B392
 
 
 about:
@@ -106,13 +111,13 @@ footer:
         title: servicios
         content:
             - devops
-  - line:
-        title: column 2
-  - line:
-        title: column 3
+  # - line:
+  #       title: column 2
+  # - line:
+  #       title: column 3
 
 
-credits: 'Kontinu 2019'
+credits: 'Kontinu 2021'
 
 
 
@@ -134,3 +139,5 @@ exclude:
   - .gitignore
   - .git
   - LICENSE
+
+

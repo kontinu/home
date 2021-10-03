@@ -1,35 +1,37 @@
 .navbar {
-    text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    text-transform: lowercase;
+    /* font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif; */
+    font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Ubuntu Mono', monospace;
     font-weight: 800;
-    background-image: linear-gradient(90deg, rgb(10, 26, 44) , rgb(24, 56, 88) , rgb(115, 141, 175) );
+    /* background-image: linear-gradient(90deg, rgb(10, 26, 44) , rgb(24, 56, 88) , rgb(115, 141, 175) ); */
+    background-color: {{ site.color.primary }} ;
 }
 
 /*agregamos css manual para titulo*/
 .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
-    color: #f18780;
+    color: {{ site.color.accents }};
     background-color: transparent;
 }
 
 
 
 
+footer .footer-col {
+    margin-bottom: 50px;
+}
+
 footer .footer-above {
     padding-top: 50px;
     /* background-color: #{{ site.color.secondary }}; */
-    background-image: linear-gradient(90deg, rgb(10, 26, 44) , rgb(24, 56, 88) , rgb(115, 141, 175) );
-
-}
-
-footer .footer-col {
-    margin-bottom: 50px;
+    /* background-image: linear-gradient(90deg, rgb(10, 26, 44) , rgb(24, 56, 88) , rgb(115, 141, 175) ); */
+    background-color: {{ site.color.primary }} ;
 }
 
 footer .footer-below {
     padding: 25px 0;
     /* background-color: #{{ site.color.secondary-dark }}; */
-    background-image: linear-gradient(90deg, rgb(10, 26, 44) , rgb(24, 56, 88) , rgb(115, 141, 175) );
-
+    /* background-image: linear-gradient(90deg, rgb(10, 26, 44) , rgb(24, 56, 88) , rgb(115, 141, 175) ); */
+     background-color: {{ site.color.primary }} ;
 }
 
 div.polaroid {
@@ -54,20 +56,26 @@ div.polaroid:hover {
 
 .logo {
     vertical-align: middle;
-    padding:0px 10px 0 10px;
+    padding:0px 8px 0 8px;
     z-index:2;
     position:relative;
     border:0 none;
-    width: 12rem;
-    /* width: 10%;*/
+    width: 8rem;
+    /* width: 10%; */
     height: auto;
     /* width: 10px; */
     margin-top: 0px;
 }
 
+.navbar-brand {
+  font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
 
 @media (min-width: 768px)
 .navbar-fixed-top .navbar-brand .logo  {
+  font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 800;
     font-size: 3em;
     width: 3rem;
     height: auto;
@@ -103,3 +111,21 @@ vertical-align {
     heigth:auto;
     padding:0 0 0 0;
 } */
+
+/* body {
+    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 20px;
+    line-height: 40px;
+    color: #1d4063;
+    background-color: #ffffff;
+} */
+
+.dropdown {
+    /* background-color: #FD3E89; */
+    color: #ffffff;
+    padding: 16px;
+    font-size: inherit;
+    border: none;
+    /* padding-top: inherit;
+    padding-bottom: 19.5px; */
+}

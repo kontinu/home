@@ -12,7 +12,7 @@
                 <span class="icon-bar"></span>
             </button>
 
-            <img class="navbar-brand sticky-top  navbar-left   logo img-responsive"   id="Logo" src="img/mini_full.png">
+            <img class="navbar-brand sticky-top  navbar-left   logo img-responsive"   id="Logo" src="img/{{site.images.logo}}">
             <a class="navbar-brand sticky-top " href="/">
                 <span>{{site.navbar_brand}}</span>
             </a>
@@ -27,7 +27,7 @@
                 </li>
                 <li class="page-scroll">
                     <div class="dropdown">
-                        <a href="#portfolio">Servicios</a>
+                        <a href="#portfolio">01. Servicios</a>
                             <div class="collapse dropdown-content"  >
                                 {% for post in site.posts %}
                                     <a  href="{{ post.reference }}">{{post.tooltiptext}} </a>
@@ -38,10 +38,12 @@
                 </li>
 
                 <li class="page-scroll nav-item">
-                    <a href="#about">Sobre Nosotros</a>
+                    <a href="/about.html">02. Sobre Nosotros</a>
                 </li>
                 <li class="page-scroll nav-item">
-                    <a href="#contact">Contacto</a>
+                    <a href="#contact">
+                      03. Contacto
+                    </a>
                 </li>
             </ul>
         </div>

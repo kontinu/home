@@ -11,5 +11,5 @@ WORKDIR /app
 COPY . /app
 
 COPY Gemfile ./
-RUN bundle install && cat Gemfile.lock
+RUN bundle install
 
