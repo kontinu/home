@@ -13,6 +13,10 @@ My webpage using Jekyll.
 
 
 # Todo
+
+
+- use new icon pack https://www.flaticon.com/packs/webinar-and-podcasting
+
 - [ ] Improve About in its own page.
 - [ ] Contact in its own page (card) [https://supergiant.io/contact/](https://supergiant.io/contact/)
 - [ ] Improve Hero

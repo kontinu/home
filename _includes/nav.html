@@ -27,7 +27,12 @@
                 </li>
                 <li class="page-scroll">
                     <div class="dropdown">
-                        <a href="#portfolio">01. Servicios</a>
+                        <a href="#portfolio">
+                          <span style="color: #{{site.color.accents}}">
+                            01.
+                          </span>
+                           Servicios
+                        </a>
                             <div class="collapse dropdown-content"  >
                                 {% for post in site.posts %}
                                     <a  href="{{ post.reference }}">{{post.tooltiptext}} </a>
@@ -38,11 +43,18 @@
                 </li>
 
                 <li class="page-scroll nav-item">
-                    <a href="/about.html">02. Sobre Nosotros</a>
+                    <a href="/about.html">
+                      <span style="color: #{{site.color.accents}}">
+                        02.
+                      </span>
+                      Sobre Nosotros</a>
                 </li>
                 <li class="page-scroll nav-item">
                     <a href="#contact">
-                      03. Contacto
+                      <span style="color: #{{site.color.accents}}">
+                        03.
+                      </span>
+                      Contacto
                     </a>
                 </li>
             </ul>

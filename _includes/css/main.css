@@ -21,8 +21,8 @@ a:hover,
 a:focus,
 a:active,
 a.active {
-    outline: 0;
-    color: #{{ site.color.primary }};
+    outline: 2;
+    color: #{{ site.color.accents }};
 }
 
 /*ocultamos el texto del H1*/
@@ -140,6 +140,11 @@ header .intro-text .skills {
 
     }
 
+    .logo {
+        width: 1rem;
+        font-weight: 700;
+        margin-top: 0;
+    }
     .navbar-fixed-top .navbar-brand {
         font-size: 3em;
         -webkit-transition: all .3s;
@@ -168,15 +173,28 @@ header .intro-text .skills {
 
 }
 
-
+.logo {
+  width: 1rem;
+  font-weight: 700;
+  margin-top: 0;
+}
 
 /*ocano 11/02/19*/
+
+ /*agregamos css manual para el brand*/
+.page-scroll:hover, .page-scroll:focus {
+  color: #{{site.color.accents}};
+  background-color: #{{site.color.accents}};
+  border-color: #{{site.color.accents}};
+
+}
 
 
 a, a:hover, a:focus, a:active, a.active {
     outline: 0;
     color: #ffffff;
 }
+
 /* Dropdown Button */
 .dropdown {
     /* background-color: #{{site.color.accents}}; */
@@ -205,7 +223,7 @@ a, a:hover, a:focus, a:active, a.active {
     background-color: #243342;
     min-width: 200px;
     font-size: 0.9em;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(215, 117, 117, 0.2);
     z-index: 1;
   }
 
@@ -218,13 +236,17 @@ a, a:hover, a:focus, a:active, a.active {
   }
 
   /* Change color of dropdown links on hover */
-  .dropdown-content a:hover {background-color: #{{site.color.accents}};}
+  .dropdown-content a:hover {
+    background-color: #{{site.color.accents}};
+  }
 
   /* Show the dropdown menu on hover */
   .dropdown:hover .dropdown-content {display: block; }
 
   /* Change the background color of the dropdown button when the dropdown content is shown */
-  .dropdown:hover .dropdown {background-color: #{{site.color.accents}};}
+  .dropdown:hover .dropdown {
+    background-color: #{{site.color.accents}};
+  }
 
 /*ocano 11/02/19*/
 
@@ -358,8 +380,10 @@ section.success {
 
 .btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open>.dropdown-toggle.btn-success {
     border: solid 2px #fff;
-    color: #fff;
-    background: #{{site.color.accents}};
+    color: #{{site.color.accents}};
+    background: transparent;
+    border-color: #04AA6D;
+    /* border-style: dotted; */
 }
 
 

@@ -9,11 +9,11 @@
 
 /*agregamos css manual para titulo*/
 .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
-    color: {{ site.color.accents }};
-    background-color: transparent;
+    color: #{{ site.color.accents }};
+    background-color: #{{site.color.primary}};
+    border-color: #{{ site.color.accents }};
+    /* border: 1px solid #{{ site.color.accents }}; */
 }
-
-
 
 
 footer .footer-col {
@@ -77,7 +77,7 @@ div.polaroid:hover {
   font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
   font-weight: 800;
     font-size: 3em;
-    width: 3rem;
+    width: 32rem;
     height: auto;
     -webkit-transition: all .3s;
     -moz-transition: all .3s;
