@@ -10,9 +10,15 @@ const dataset =
   process.env.PUBLIC_SANITY_DATASET ??
   "production";
 
+const apiVersion =
+  process.env.SANITY_STUDIO_API_VERSION ??
+  process.env.PUBLIC_SANITY_API_VERSION ??
+  "2025-01-01";
+
 export default defineCliConfig({
   api: {
     projectId,
-    dataset
+    dataset,
+    apiVersion
   }
 });

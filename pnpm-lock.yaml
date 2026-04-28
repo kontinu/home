@@ -28,6 +28,10 @@ importers:
         version: 5.9.3
 
   apps/web:
+    dependencies:
+      '@sanity/client':
+        specifier: ^7.11.0
+        version: 7.22.0
     devDependencies:
       '@astrojs/check':
         specifier: ^0.9.4
