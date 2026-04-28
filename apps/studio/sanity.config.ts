@@ -1,6 +1,10 @@
 import { defineConfig } from "sanity";
+import { structureTool } from "sanity/structure";
 
 import { schemaTypes } from "./schemaTypes";
+
+const singletonTypes = new Set(["siteSettings"]);
+const singletonActions = new Set(["publish", "discardChanges", "restore"]);
 
 const projectId =
   process.env.SANITY_STUDIO_PROJECT_ID ??
@@ -17,7 +21,42 @@ export default defineConfig({
   title: "Kontinu Studio",
   projectId,
   dataset,
+  plugins: [
+    structureTool({
+      structure: (S) =>
+        S.list()
+          .title("Content")
+          .items([
+            S.listItem()
+              .title("Site settings")
+              .id("siteSettings")
+              .child(
+                S.document()
+                  .schemaType("siteSettings")
+                  .documentId("siteSettings")
+              ),
+            ...S.documentTypeListItems().filter((item) => {
+              const id = item.getId();
+              return id == null || !singletonTypes.has(id);
+            })
+          ])
+    })
+  ],
   schema: {
     types: schemaTypes
+  },
+  document: {
+    actions: (previousActions, context) =>
+      singletonTypes.has(context.schemaType)
+        ? previousActions.filter(
+            (action) => action.action != null && singletonActions.has(action.action)
+          )
+        : previousActions,
+    newDocumentOptions: (previousOptions, context) =>
+      context.creationContext.type === "global"
+        ? previousOptions.filter(
+            (templateItem) => !singletonTypes.has(templateItem.templateId)
+          )
+        : previousOptions
   }
 });

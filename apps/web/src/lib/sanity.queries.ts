@@ -1,3 +1,5 @@
+export const SITE_SETTINGS_DOCUMENT_ID = "siteSettings";
+
 export const ctaProjection = `
   primaryCta {
     label,
@@ -82,7 +84,7 @@ export const faqQuery = `
 `;
 
 export const siteSettingsQuery = `
-  *[_type == "siteSettings"][0] {
+  *[_type == "siteSettings" && _id == "${SITE_SETTINGS_DOCUMENT_ID}"][0] {
     title,
     description,
     ${ctaProjection}

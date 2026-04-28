@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  SITE_SETTINGS_DOCUMENT_ID,
   bootcampBySlugQuery,
   bootcampsQuery,
   faqQuery,
@@ -60,7 +61,8 @@ describe("sanity queries", () => {
     expect(faqQuery).toContain("question");
     expect(faqQuery).toContain("answer");
 
-    expect(siteSettingsQuery).toContain('*[_type == "siteSettings"][0]');
+    expect(SITE_SETTINGS_DOCUMENT_ID).toBe("siteSettings");
+    expect(siteSettingsQuery).toContain(`_id == "${SITE_SETTINGS_DOCUMENT_ID}"`);
     expect(siteSettingsQuery).toContain("title");
     expect(siteSettingsQuery).toContain("primaryCta");
   });

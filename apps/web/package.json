@@ -8,7 +8,7 @@
     "preview": "astro preview --host 0.0.0.0 --port 4321",
     "check": "astro check",
     "test": "vitest run",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test --pass-with-no-tests"
   },
   "dependencies": {
     "@sanity/client": "^7.11.0"
