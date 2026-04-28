@@ -10,4 +10,3 @@ export const sanityClient = createClient({
   apiVersion: env.sanityApiVersion,
   useCdn: env.sanityUseCdn
 });
-
