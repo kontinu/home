@@ -3,3 +3,13 @@ _site
 .jekyll-metadata
 Gemfile.lock
 .superpowers/
+node_modules/
+.pnpm-store/
+pnpm-lock.yaml
+apps/*/dist/
+apps/*/.astro/
+apps/*/.sanity/
+.env
+.env.local
+.env.*.local
+.config/

@@ -1,0 +1,17 @@
+{
+  "name": "@kontinu/studio",
+  "private": true,
+  "scripts": {
+    "dev": "mkdir -p ../../.config/home ../../.config/xdg ../../.config/cache && HOME=$(pwd)/../../.config/home XDG_CONFIG_HOME=$(pwd)/../../.config/xdg XDG_CACHE_HOME=$(pwd)/../../.config/cache sanity dev --host 0.0.0.0 --port 3333",
+    "build": "mkdir -p ../../.config/home ../../.config/xdg ../../.config/cache && HOME=$(pwd)/../../.config/home XDG_CONFIG_HOME=$(pwd)/../../.config/xdg XDG_CACHE_HOME=$(pwd)/../../.config/cache sanity build"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sanity": "^3.78.1",
+    "styled-components": "^6.1.19"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}

@@ -1,5 +1,3 @@
-version: "3.3"
-
 services:
   page:
     command: "jekyll serve --livereload --watch -P 4000 -H 0.0.0.0"
@@ -12,3 +10,41 @@ services:
       - $PWD:/app
     ports:
       -  "${PORT:-4000}:4000"
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    working_dir: /workspace
+    command: pnpm --filter @kontinu/web dev
+    environment:
+      PUBLIC_SITE_URL: ${PUBLIC_SITE_URL:-http://localhost:4321}
+      PUBLIC_SANITY_PROJECT_ID: ${PUBLIC_SANITY_PROJECT_ID:-ppsg7ml5}
+      PUBLIC_SANITY_DATASET: ${PUBLIC_SANITY_DATASET:-production}
+    volumes:
+      - .:/workspace
+      - pnpm-store:/pnpm/store
+      - workspace-node-modules:/workspace/node_modules
+    ports:
+      - "${WEB_PORT:-4321}:4321"
+  studio:
+    build:
+      context: .
+      dockerfile: apps/studio/Dockerfile
+    working_dir: /workspace
+    command: pnpm --filter @kontinu/studio dev
+    environment:
+      SANITY_STUDIO_PROJECT_ID: ${SANITY_STUDIO_PROJECT_ID:-ppsg7ml5}
+      SANITY_STUDIO_DATASET: ${SANITY_STUDIO_DATASET:-production}
+      HOME: ${SANITY_STUDIO_HOME:-/workspace/.config/home}
+      XDG_CONFIG_HOME: ${SANITY_STUDIO_XDG_CONFIG_HOME:-/workspace/.config/xdg}
+      XDG_CACHE_HOME: ${SANITY_STUDIO_XDG_CACHE_HOME:-/workspace/.config/cache}
+    volumes:
+      - .:/workspace
+      - pnpm-store:/pnpm/store
+      - workspace-node-modules:/workspace/node_modules
+    ports:
+      - "${STUDIO_PORT:-3333}:3333"
+
+volumes:
+  pnpm-store:
+  workspace-node-modules:

@@ -1,0 +1,20 @@
+{
+  "name": "@kontinu/web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 0.0.0.0 --port 4321",
+    "build": "astro build",
+    "preview": "astro preview --host 0.0.0.0 --port 4321",
+    "check": "astro check",
+    "test": "vitest run",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@playwright/test": "^1.54.0",
+    "astro": "^5.8.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  }
+}

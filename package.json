@@ -1,0 +1,19 @@
+{
+  "name": "kontinu-site",
+  "private": true,
+  "packageManager": "pnpm@10.32.1",
+  "scripts": {
+    "dev": "docker compose up web studio",
+    "dev:web": "pnpm --filter @kontinu/web dev",
+    "dev:studio": "pnpm --filter @kontinu/studio dev",
+    "build": "pnpm build:web && pnpm build:studio",
+    "build:web": "pnpm --filter @kontinu/web build",
+    "build:studio": "pnpm --filter @kontinu/studio build",
+    "check": "pnpm check:web",
+    "check:web": "pnpm --filter @kontinu/web check",
+    "test": "pnpm test:web",
+    "test:web": "pnpm --filter @kontinu/web test",
+    "test:e2e": "pnpm --filter @kontinu/web test:e2e",
+    "validate": "pnpm build && pnpm check && pnpm test"
+  }
+}
