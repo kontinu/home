@@ -15,7 +15,12 @@ services:
       context: .
       dockerfile: apps/web/Dockerfile
     working_dir: /workspace
-    command: pnpm --filter @kontinu/web dev
+    command:
+      - ./scripts/dev/bootstrap-workspace.sh
+      - pnpm
+      - --filter
+      - "@kontinu/web"
+      - dev
     environment:
       PUBLIC_SITE_URL: ${PUBLIC_SITE_URL:-http://localhost:4321}
       PUBLIC_SANITY_PROJECT_ID: ${PUBLIC_SANITY_PROJECT_ID:-ppsg7ml5}
@@ -31,7 +36,12 @@ services:
       context: .
       dockerfile: apps/studio/Dockerfile
     working_dir: /workspace
-    command: pnpm --filter @kontinu/studio dev
+    command:
+      - ./scripts/dev/bootstrap-workspace.sh
+      - pnpm
+      - --filter
+      - "@kontinu/studio"
+      - dev
     environment:
       SANITY_STUDIO_PROJECT_ID: ${SANITY_STUDIO_PROJECT_ID:-ppsg7ml5}
       SANITY_STUDIO_DATASET: ${SANITY_STUDIO_DATASET:-production}
