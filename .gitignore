@@ -8,6 +8,8 @@ node_modules/
 apps/*/dist/
 apps/*/.astro/
 apps/*/.sanity/
+apps/*/test-results/
+apps/*/playwright-report/
 .env
 .env.local
 .env.*.local
