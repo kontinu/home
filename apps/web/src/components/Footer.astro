@@ -1,0 +1,25 @@
+---
+import { siteShell } from "../content/site-shell";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container-wide site-footer__grid">
+    <div class="site-footer__brand">
+      <h2 class="site-footer__title">{siteShell.siteName}</h2>
+      <p class="footer__copy">{siteShell.tagLine}</p>
+    </div>
+
+    <div class="site-footer__links" aria-label="Enlaces del sitio">
+      {siteShell.footerLinks.map((item) => (
+        <a href={item.href}>{item.label}</a>
+      ))}
+    </div>
+  </div>
+
+  <div class="container-wide site-footer__bottom">
+    <span>&copy; {year} {siteShell.siteName}</span>
+    <span>Consultoría cloud, Kubernetes y bootcamps técnicos</span>
+  </div>
+</footer>

@@ -1,0 +1,37 @@
+---
+interface Action {
+  href: string;
+  label: string;
+  variant?: "primary" | "secondary";
+}
+
+interface Props {
+  title: string;
+  body: string;
+  actions: Action[];
+}
+
+const { title, body, actions } = Astro.props;
+---
+
+<section class="section">
+  <div class="container-wide">
+    <div class="cta-band">
+      <div>
+        <h2 class="cta-band__title">{title}</h2>
+        <p class="cta-band__body">{body}</p>
+      </div>
+
+      <div class="cta-band__actions">
+        {actions.map((action) => (
+          <a
+            class={action.variant === "secondary" ? "button-secondary" : "button"}
+            href={action.href}
+          >
+            {action.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

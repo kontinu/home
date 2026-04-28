@@ -1,0 +1,52 @@
+---
+import { siteShell } from "../content/site-shell";
+
+const { hero } = siteShell;
+---
+
+<section class="hero">
+  <div class="container-wide">
+    <div class="hero__panel">
+      <div class="hero__grid">
+        <div class="hero__content">
+          <span class="eyebrow">{hero.eyebrow}</span>
+          <h1 class="hero__title">{hero.title}</h1>
+          <p class="hero__lede">{hero.lede}</p>
+
+          <div class="hero__actions">
+            <a class="button" href={hero.primaryAction.href}>{hero.primaryAction.label}</a>
+            <a class="button-secondary" href={hero.secondaryAction.href}>
+              {hero.secondaryAction.label}
+            </a>
+          </div>
+
+          <div class="hero__meta" aria-label="Puntos clave">
+            {hero.meta.map((item) => (
+              <span>{item}</span>
+            ))}
+          </div>
+        </div>
+
+        <aside class="hero__summary" aria-label="Resumen de propuesta de valor">
+          <h2>{hero.summaryTitle}</h2>
+          <p>{hero.summaryBody}</p>
+
+          <ul class="stack-list">
+            {hero.summaryList.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+
+          <div class="metrics">
+            {hero.metrics.map((metric) => (
+              <div class="metric">
+                <span class="metric__value">{metric.value}</span>
+                <span class="metric__label">{metric.label}</span>
+              </div>
+            ))}
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</section>

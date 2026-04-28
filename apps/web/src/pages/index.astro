@@ -1,17 +1,128 @@
 ---
-const title = "Kontinu";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import CtaBand from "../components/CtaBand.astro";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
-  </head>
-  <body>
-    <main>
-      <h1>{title}</h1>
-      <p>Parallel Astro workspace scaffold is ready.</p>
-    </main>
-  </body>
-</html>
+<BaseLayout>
+  <Hero />
+
+  <section class="section" id="como-trabajamos">
+    <div class="container-wide">
+      <SectionHeading
+        eyebrow="Cómo trabajamos"
+        title="Dos caminos claros, una misma disciplina técnica."
+        body="La homepage organiza la oferta para que líderes, plataformas internas y equipos técnicos encuentren rápido si necesitan consultoría aplicada o formación de alto impacto."
+      />
+
+      <div class="dual-grid">
+        <article class="path-card">
+          <span class="eyebrow">Servicios</span>
+          <h2 class="path-card__title">Consultoría para decisiones y ejecución.</h2>
+          <p class="path-card__body">
+            Entramos donde hay presión real: modernización cloud, plataformas Kubernetes,
+            automatización de delivery y operación más confiable.
+          </p>
+
+          <ul class="path-card__list">
+            <li>
+              <strong>Assessments y roadmaps</strong>
+              Definimos prioridades accionables para cloud, platform engineering y DevOps.
+            </li>
+            <li>
+              <strong>Acompañamiento hands-on</strong>
+              Diseñamos con el equipo, aterrizamos prácticas y reducimos fricción operativa.
+            </li>
+            <li>
+              <strong>Lenguaje ejecutivo y técnico</strong>
+              Conectamos objetivos de negocio con decisiones de arquitectura y delivery.
+            </li>
+          </ul>
+
+          <div class="path-card__footer">
+            <span class="path-card__tag">Cloud · Kubernetes · Delivery</span>
+            <a class="button" href="/servicios">Explorar servicios</a>
+          </div>
+        </article>
+
+        <article class="path-card">
+          <span class="eyebrow">Bootcamps</span>
+          <h2 class="path-card__title">Formación corporativa que termina en práctica.</h2>
+          <p class="path-card__body">
+            Diseñamos experiencias para squads y líderes técnicos que necesitan alinear lenguaje,
+            elevar criterio y llevar capacidades nuevas al flujo diario.
+          </p>
+
+          <ul class="path-card__list">
+            <li>
+              <strong>Rutas por nivel y rol</strong>
+              Desde fundamentos de containers hasta operación de Kubernetes y prácticas DevOps.
+            </li>
+            <li>
+              <strong>Enfoque aplicado</strong>
+              Casos, ejercicios y sesiones guiadas para transformar teoría en decisiones reales.
+            </li>
+            <li>
+              <strong>Formato enterprise-ready</strong>
+              Cohortes internas, workshops intensivos y acompañamiento posterior.
+            </li>
+          </ul>
+
+          <div class="path-card__footer">
+            <span class="path-card__tag">Upskilling · Squads · Workshops</span>
+            <a class="button-secondary" href="/bootcamps">Ver bootcamps</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-wide">
+      <SectionHeading
+        eyebrow="Lo que hacemos bien"
+        title="Una base de confianza para iniciativas técnicas que no admiten improvisación."
+        body="El rediseño se mantiene enfocado en una señal corporativa clara: experiencia seria, lenguaje concreto y una propuesta unificada entre advisory y enablement."
+      />
+
+      <div class="signal-grid">
+        <article class="signal-card">
+          <p class="signal-card__kicker">Platform engineering</p>
+          <h2 class="signal-card__title">Arquitectura con sentido operativo</h2>
+          <p class="signal-card__body">
+            Priorizamos decisiones que mejoran velocidad, confiabilidad y gobernanza sin agregar
+            complejidad innecesaria.
+          </p>
+        </article>
+
+        <article class="signal-card">
+          <p class="signal-card__kicker">Delivery moderno</p>
+          <h2 class="signal-card__title">Containers, pipelines y estándares compartidos</h2>
+          <p class="signal-card__body">
+            Traducimos conceptos como CI/CD, observabilidad y seguridad en prácticas que el equipo
+            puede sostener.
+          </p>
+        </article>
+
+        <article class="signal-card">
+          <p class="signal-card__kicker">Enablement</p>
+          <h2 class="signal-card__title">Capacitación que se integra al trabajo real</h2>
+          <p class="signal-card__body">
+            La formación no se separa de la operación: refuerza el criterio que luego sostiene el
+            delivery.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="¿Tu siguiente paso es acelerar una plataforma o elevar las capacidades del equipo?"
+    body="La nueva homepage deja ambos caminos visibles desde el primer scroll para que cada visitante entre por la conversación correcta."
+    actions={[
+      { href: "/servicios", label: "Ir a Servicios" },
+      { href: "/bootcamps", label: "Ir a Bootcamps", variant: "secondary" }
+    ]}
+  />
+</BaseLayout>

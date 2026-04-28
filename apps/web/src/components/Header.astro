@@ -1,0 +1,25 @@
+---
+import { siteShell } from "../content/site-shell";
+---
+
+<header class="site-header">
+  <div class="container-wide site-header__bar">
+    <div class="site-header__brand">
+      <a class="site-header__logo" href="/">
+        <span class="site-header__logo-mark" aria-hidden="true">K</span>
+        <span>{siteShell.siteName}</span>
+      </a>
+      <p class="site-header__meta">{siteShell.tagLine}</p>
+    </div>
+
+    <nav aria-label="Principal" class="site-header__nav">
+      {siteShell.nav.map((item) => (
+        <a href={item.href}>{item.label}</a>
+      ))}
+    </nav>
+
+    <div class="site-header__actions">
+      <a class="button-secondary" href="mailto:hola@kontinu.io">Hablemos</a>
+    </div>
+  </div>
+</header>

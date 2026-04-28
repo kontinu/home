@@ -1,0 +1,35 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Kontinu | Cloud consulting y bootcamps técnicos",
+  description = "Kontinu impulsa servicios de consultoría cloud y bootcamps técnicos para equipos que construyen, operan y escalan plataformas modernas."
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body>
+    <div class="site-shell">
+      <a class="sr-only" href="#contenido-principal">Saltar al contenido</a>
+      <Header />
+      <main id="contenido-principal">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>
