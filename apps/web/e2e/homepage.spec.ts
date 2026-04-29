@@ -30,7 +30,7 @@ test("homepage shows the primary headline and both conversion paths", async ({
   await expect(page).toHaveURL(/\/servicios\/?$/);
   await expect(
     page.getByRole("heading", {
-      level: 2,
+      level: 1,
       name: /Consultoría cloud y platform engineering/i
     })
   ).toBeVisible();
@@ -41,7 +41,7 @@ test("homepage shows the primary headline and both conversion paths", async ({
   await expect(page).toHaveURL(/\/bootcamps\/?$/);
   await expect(
     page.getByRole("heading", {
-      level: 2,
+      level: 1,
       name: /Bootcamps técnicos para convertir conceptos en práctica operativa/i
     })
   ).toBeVisible();
