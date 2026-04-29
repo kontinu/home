@@ -20,9 +20,9 @@ test("homepage shows the primary headline and both conversion paths", async ({
   ).toBeVisible();
 
   await expect(
-    page.getByRole("link", { name: /Explorar servicios/i })
+    page.getByRole("link", { name: /Explorar servicios/i }).first()
   ).toBeVisible();
   await expect(
-    page.getByRole("link", { name: /Ver bootcamps/i })
+    page.getByRole("link", { name: /Ver bootcamps/i }).first()
   ).toBeVisible();
 });
