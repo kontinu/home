@@ -23,7 +23,7 @@ services:
       - dev
     environment:
       PUBLIC_SITE_URL: ${PUBLIC_SITE_URL:-http://localhost:4321}
-      PUBLIC_SANITY_PROJECT_ID: ${PUBLIC_SANITY_PROJECT_ID:-ppsg7ml5}
+      PUBLIC_SANITY_PROJECT_ID: ${PUBLIC_SANITY_PROJECT_ID:-mbug6i3o}
       PUBLIC_SANITY_DATASET: ${PUBLIC_SANITY_DATASET:-production}
     volumes:
       - .:/workspace
@@ -43,7 +43,7 @@ services:
       - "@kontinu/studio"
       - dev
     environment:
-      SANITY_STUDIO_PROJECT_ID: ${SANITY_STUDIO_PROJECT_ID:-ppsg7ml5}
+      SANITY_STUDIO_PROJECT_ID: ${SANITY_STUDIO_PROJECT_ID:-mbug6i3o}
       SANITY_STUDIO_DATASET: ${SANITY_STUDIO_DATASET:-production}
       HOME: ${SANITY_STUDIO_HOME:-/workspace/.config/home}
       XDG_CONFIG_HOME: ${SANITY_STUDIO_XDG_CONFIG_HOME:-/workspace/.config/xdg}

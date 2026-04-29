@@ -3,12 +3,23 @@ export type HeroMetric = {
   label: string;
 };
 
+export type HeroPanel = {
+  kicker: string;
+  title: string;
+  body: string;
+};
+
 export const homepageContent = {
   hero: {
     eyebrow: "Consultoría + formación técnica",
-    title: "Aceleramos equipos y plataformas cloud con criterio operativo.",
+    titleLines: [
+      "Aceleramos",
+      "plataformas",
+      "con criterio operativo."
+    ],
+    titleAccent: "cloud",
     lede:
-      "Diseñamos hojas de ruta, modernizamos delivery y entrenamos equipos en Kubernetes, containers y prácticas DevOps para que el cambio sea sostenible.",
+      "Diseñamos hojas de ruta, modernizamos delivery y entrenamos equipos en Kubernetes, containers y prácticas DevOps para mover arquitectura, operación y capacidades en una misma trayectoria de avance.",
     primaryAction: {
       href: "/servicios",
       label: "Explorar servicios"
@@ -18,22 +29,26 @@ export const homepageContent = {
       label: "Ver bootcamps"
     },
     meta: [
-      "Spanish-first con lenguaje técnico claro",
-      "Consultoría enterprise-ready",
-      "Bootcamps orientados a ejecución"
+      "Cloud architecture",
+      "Kubernetes enablement",
+      "Delivery modernization"
     ],
-    summaryTitle: "Una sola firma para estrategia, delivery y upskilling",
-    summaryBody:
-      "Kontinu conecta advisory técnico con capacitación aplicada para ayudar a plataformas internas, squads y líderes de tecnología a moverse con más confianza.",
-    summaryList: [
-      "Assessment y roadmap para cloud, platform engineering y modernización.",
-      "Acompañamiento de adopción con foco en seguridad, automatización y operación.",
-      "Bootcamps corporativos para convertir conceptos en hábitos de trabajo."
-    ],
-    metrics: [
-      { value: "Cloud", label: "Arquitectura, operación y gobierno" },
-      { value: "Kubernetes", label: "Plataformas listas para escalar" },
-      { value: "Containers", label: "Capacidades que aterrizan en delivery" }
-    ] satisfies HeroMetric[]
+    panels: [
+      {
+        kicker: "Servicios",
+        title: "Assessments y diseño operativo",
+        body: "Arquitectura, platform engineering y criterios de adopción para líderes y plataformas internas."
+      },
+      {
+        kicker: "Plataformas",
+        title: "Kubernetes y delivery confiable",
+        body: "Más claridad para operar, desplegar y escalar sin fricción innecesaria."
+      },
+      {
+        kicker: "Bootcamps",
+        title: "Capacidad técnica que aterriza",
+        body: "Formación corporativa para convertir conceptos en decisiones reales."
+      }
+    ] satisfies HeroPanel[]
   }
 } as const;

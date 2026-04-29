@@ -10,7 +10,13 @@ const { hero } = homepageContent;
       <div class="hero__grid">
         <div class="hero__content">
           <span class="eyebrow">{hero.eyebrow}</span>
-          <h1 class="hero__title">{hero.title}</h1>
+          <h1 class="hero__title">
+            <span>{hero.titleLines[0]}</span>
+            <span>
+              {hero.titleLines[1]} <em>{hero.titleAccent}</em>
+            </span>
+            <span>{hero.titleLines[2]}</span>
+          </h1>
           <p class="hero__lede">{hero.lede}</p>
 
           <div class="hero__actions">
@@ -27,21 +33,23 @@ const { hero } = homepageContent;
           </div>
         </div>
 
-        <aside class="hero__summary" aria-label="Resumen de propuesta de valor">
-          <h2>{hero.summaryTitle}</h2>
-          <p>{hero.summaryBody}</p>
+        <aside class="hero__system" aria-label="Resumen visual de propuesta de valor">
+          <div class="hero__orbital">
+            <span class="hero__orbit hero__orbit--small"></span>
+            <span class="hero__orbit hero__orbit--medium"></span>
+            <span class="hero__orbit hero__orbit--large"></span>
+            <span class="hero__node hero__node--alpha"></span>
+            <span class="hero__node hero__node--beta"></span>
+            <span class="hero__node hero__node--gamma"></span>
+            <span class="hero__core" aria-hidden="true"></span>
+          </div>
 
-          <ul class="stack-list">
-            {hero.summaryList.map((item) => (
-              <li>{item}</li>
-            ))}
-          </ul>
-
-          <div class="metrics">
-            {hero.metrics.map((metric) => (
-              <div class="metric">
-                <span class="metric__value">{metric.value}</span>
-                <span class="metric__label">{metric.label}</span>
+          <div class="hero__panels">
+            {hero.panels.map((panel) => (
+              <div class="hero__panel-card">
+                <span class="hero__panel-kicker">{panel.kicker}</span>
+                <h2 class="hero__panel-title">{panel.title}</h2>
+                <p class="hero__panel-body">{panel.body}</p>
               </div>
             ))}
           </div>
