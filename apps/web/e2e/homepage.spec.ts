@@ -35,6 +35,15 @@ test("homepage shows the primary headline and both conversion paths", async ({
     })
   ).toBeVisible();
 
+  await page.getByRole("link", { name: /Cómo trabajamos/i }).click();
+  await expect(page).toHaveURL(/\/#como-trabajamos$/);
+  await expect(
+    page.getByRole("heading", {
+      level: 2,
+      name: /Dos caminos claros, una misma disciplina técnica/i
+    })
+  ).toBeVisible();
+
   await page.goto("/");
 
   await page.getByRole("link", { name: /Ver bootcamps/i }).first().click();
@@ -45,4 +54,11 @@ test("homepage shows the primary headline and both conversion paths", async ({
       name: /Bootcamps técnicos para convertir conceptos en práctica operativa/i
     })
   ).toBeVisible();
+
+  await page.keyboard.press("Tab");
+  await expect(page.getByRole("link", { name: /Saltar al contenido/i })).toBeFocused();
+  await expect(page.getByRole("link", { name: /Saltar al contenido/i })).toBeVisible();
+
+  await page.keyboard.press("Enter");
+  await expect(page).toHaveURL(/\/bootcamps\/?#contenido-principal$/);
 });
