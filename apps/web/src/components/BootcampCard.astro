@@ -1,0 +1,34 @@
+---
+import type { BootcampEntry } from "../lib/offering-content";
+
+interface Props {
+  bootcamp: BootcampEntry;
+}
+
+const { bootcamp } = Astro.props;
+const detailHref = `/bootcamps/${bootcamp.slug}`;
+const cta = bootcamp.primaryCta ?? {
+  label: "Solicitar información",
+  href: "mailto:hola@kontinu.io?subject=Informaci%C3%B3n%20sobre%20bootcamps%20Kontinu"
+};
+---
+
+<article class="offering-card">
+  <span class="eyebrow">Bootcamps</span>
+  <h2 class="offering-card__title">{bootcamp.title}</h2>
+  {
+    bootcamp.audience && (
+      <p class="offering-card__meta">
+        <strong>Ideal para:</strong> {bootcamp.audience}
+      </p>
+    )
+  }
+  <p class="offering-card__body">{bootcamp.summary}</p>
+
+  <div class="offering-card__footer">
+    <a data-testid="bootcamp-card-link" class="button-ghost" href={detailHref}>
+      Ver programa
+    </a>
+    <a class="button-secondary" href={cta.href}>{cta.label}</a>
+  </div>
+</article>

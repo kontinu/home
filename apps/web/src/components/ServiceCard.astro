@@ -1,0 +1,27 @@
+---
+import type { ServiceEntry } from "../lib/offering-content";
+
+interface Props {
+  service: ServiceEntry;
+}
+
+const { service } = Astro.props;
+const detailHref = `/servicios/${service.slug}`;
+const cta = service.primaryCta ?? {
+  label: "Solicitar propuesta",
+  href: "mailto:hola@kontinu.io?subject=Solicitar%20propuesta%20Kontinu"
+};
+---
+
+<article class="offering-card">
+  <span class="eyebrow">Servicios</span>
+  <h2 class="offering-card__title">{service.title}</h2>
+  <p class="offering-card__body">{service.summary}</p>
+
+  <div class="offering-card__footer">
+    <a data-testid="service-card-link" class="button-ghost" href={detailHref}>
+      Ver detalle
+    </a>
+    <a class="button" href={cta.href}>{cta.label}</a>
+  </div>
+</article>

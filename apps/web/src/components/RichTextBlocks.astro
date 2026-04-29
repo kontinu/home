@@ -1,0 +1,93 @@
+---
+import type { RichTextBlock } from "../lib/offering-content";
+
+interface Props {
+  value?: RichTextBlock[] | null;
+}
+
+type BlockGroup =
+  | {
+      kind: "list";
+      listType: "bullet" | "number";
+      items: RichTextBlock[];
+    }
+  | {
+      kind: "block";
+      block: RichTextBlock;
+    };
+
+const { value = [] } = Astro.props;
+const blocks = value ?? [];
+
+function readText(block: RichTextBlock) {
+  return (block.children ?? [])
+    .map((child) => child.text ?? "")
+    .join("")
+    .trim();
+}
+
+const groups: BlockGroup[] = [];
+
+for (const block of blocks) {
+  const text = readText(block);
+
+  if (!text) {
+    continue;
+  }
+
+  if (block.listItem === "bullet" || block.listItem === "number") {
+    const previousGroup = groups.at(-1);
+
+    if (previousGroup?.kind === "list" && previousGroup.listType === block.listItem) {
+      previousGroup.items.push(block);
+      continue;
+    }
+
+    groups.push({
+      kind: "list",
+      listType: block.listItem,
+      items: [block]
+    });
+    continue;
+  }
+
+  groups.push({
+    kind: "block",
+    block
+  });
+}
+---
+
+<div class="rich-text-flow">
+  {
+    groups.map((group) => {
+      if (group.kind === "list") {
+        const Tag = group.listType === "number" ? "ol" : "ul";
+
+        return (
+          <Tag class="detail-list">
+            {group.items.map((item) => (
+              <li>{readText(item)}</li>
+            ))}
+          </Tag>
+        );
+      }
+
+      const text = readText(group.block);
+
+      if (group.block.style === "h2") {
+        return <h2>{text}</h2>;
+      }
+
+      if (group.block.style === "h3") {
+        return <h3>{text}</h3>;
+      }
+
+      if (group.block.style === "blockquote") {
+        return <blockquote>{text}</blockquote>;
+      }
+
+      return <p>{text}</p>;
+    })
+  }
+</div>

@@ -1,6 +1,11 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import CtaBand from "../../components/CtaBand.astro";
 import SectionHeading from "../../components/SectionHeading.astro";
+import BootcampCard from "../../components/BootcampCard.astro";
+import { getBootcamps } from "../../lib/offering-content";
+
+const bootcamps = await getBootcamps();
 ---
 
 <BaseLayout
@@ -13,20 +18,78 @@ import SectionHeading from "../../components/SectionHeading.astro";
         eyebrow="Bootcamps"
         level="h1"
         title="Bootcamps técnicos para convertir conceptos en práctica operativa."
-        body="Esta sección ya recibe navegación real desde el homepage. El detalle completo del portafolio de formación se agregará en la siguiente fase."
+        body="Rutas corporativas para squads, platform teams y liderazgo técnico que necesitan elevar criterio, alinear lenguaje y llevar el aprendizaje al trabajo diario."
       />
 
-      <article class="path-card">
-        <p class="path-card__body">
-          El objetivo de este stub es simple: confirmar que la ruta existe, que el visitante llegó
-          al área correcta y que el shell del rediseño se mantiene coherente.
-        </p>
-
-        <div class="path-card__footer">
-          <span class="path-card__tag">Containers · Kubernetes · Upskilling</span>
-          <a class="button-secondary" href="/">Volver al inicio</a>
+      <div class="collection-hero surface-panel">
+        <div class="collection-hero__content">
+          <p class="collection-hero__copy">
+            Diseñamos experiencias formativas pensadas para contexto enterprise: cohortes
+            internas, workshops intensivos y acompañamiento posterior para transformar teoría en
+            decisiones reales.
+          </p>
+          <div class="collection-hero__actions">
+            <a
+              class="button-secondary"
+              href="mailto:hola@kontinu.io?subject=Informaci%C3%B3n%20sobre%20bootcamps%20Kontinu"
+            >
+              Solicitar información
+            </a>
+            <a
+              class="button"
+              href="mailto:hola@kontinu.io?subject=Inscripci%C3%B3n%20a%20bootcamp%20Kontinu"
+            >
+              Inscribirme
+            </a>
+          </div>
         </div>
-      </article>
+
+        <ul class="service-list">
+          <li>Bootcamps aplicados a equipos reales, no cursos genéricos.</li>
+          <li>Contenidos adaptables por rol, nivel y momento operativo.</li>
+          <li>Una ruta clara entre upskilling, práctica y adopción posterior.</li>
+        </ul>
+      </div>
+
+      {
+        bootcamps.length > 0 ? (
+          <div class="offering-grid">
+            {bootcamps.map((bootcamp) => (
+              <BootcampCard bootcamp={bootcamp} />
+            ))}
+          </div>
+        ) : (
+          <article class="empty-state-card">
+            <h2 class="offering-card__title">Estamos armando la oferta formativa.</h2>
+            <p class="offering-card__body">
+              Si quieres revisar opciones para tu equipo desde ya, te compartimos el enfoque y
+              definimos juntos el formato.
+            </p>
+            <a
+              class="button-secondary"
+              href="mailto:hola@kontinu.io?subject=Informaci%C3%B3n%20sobre%20bootcamps%20Kontinu"
+            >
+              Solicitar información
+            </a>
+          </article>
+        )
+      }
     </div>
   </section>
+
+  <CtaBand
+    title="¿Buscas elevar capacidades sin separar al equipo del trabajo real?"
+    body="Bootcamps está orientado a formación aplicada: alineamos lenguaje, reforzamos criterio y convertimos el aprendizaje en una práctica útil para la operación."
+    actions={[
+      {
+        href: "mailto:hola@kontinu.io?subject=Informaci%C3%B3n%20sobre%20bootcamps%20Kontinu",
+        label: "Solicitar información",
+        variant: "secondary"
+      },
+      {
+        href: "mailto:hola@kontinu.io?subject=Inscripci%C3%B3n%20a%20bootcamp%20Kontinu",
+        label: "Inscribirme"
+      }
+    ]}
+  />
 </BaseLayout>

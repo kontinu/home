@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import RichTextBlocks from "../../components/RichTextBlocks.astro";
+import { getServiceBySlug, getServices } from "../../lib/offering-content";
+
+export async function getStaticPaths() {
+  const services = await getServices();
+
+  return services.map((service) => ({
+    params: { slug: service.slug }
+  }));
+}
+
+const slug = Astro.params.slug ?? "";
+const service = await getServiceBySlug(slug);
+
+if (!service) {
+  Astro.response.status = 404;
+}
+
+const pageTitle = service ? `${service.title} | Servicios | Kontinu` : "Servicio | Kontinu";
+const pageDescription =
+  service?.summary ??
+  "Servicios de consultoría cloud, Kubernetes y modernización de delivery de Kontinu.";
+const cta = service?.primaryCta ?? {
+  label: "Solicitar propuesta",
+  href: "mailto:hola@kontinu.io?subject=Solicitar%20propuesta%20Kontinu"
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <section class="section">
+    <div class="container-wide">
+      {
+        service ? (
+          <>
+            <div class="detail-hero surface-panel">
+              <div class="detail-hero__content">
+                <a class="detail-back-link" href="/servicios">Volver a servicios</a>
+                <span class="eyebrow">Servicio</span>
+                <h1 class="detail-title">{service.title}</h1>
+                <p class="detail-summary">{service.summary}</p>
+                <div class="detail-actions">
+                  <a class="button" href={cta.href}>{cta.label}</a>
+                  <a class="button-secondary" href="/bootcamps">Ver bootcamps</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="detail-layout">
+              <article class="detail-card">
+                <RichTextBlocks value={service.body} />
+              </article>
+
+              <aside class="detail-side-card">
+                <h2 class="detail-side-card__title">Cómo se ve este trabajo</h2>
+                <ul class="detail-list">
+                  <li>Levantamos el contexto técnico y operativo antes de recomendar cambios.</li>
+                  <li>Priorizamos decisiones con foco en impacto, riesgo y adopción real.</li>
+                  <li>El resultado apunta a criterio instalado, no solo a una entrega puntual.</li>
+                </ul>
+              </aside>
+            </div>
+          </>
+        ) : (
+          <article class="empty-state-card">
+            <h1 class="offering-card__title">No encontramos ese servicio.</h1>
+            <p class="offering-card__body">
+              Puedes volver al portafolio o escribirnos para revisar qué tipo de acompañamiento
+              necesitas.
+            </p>
+            <div class="offering-card__footer">
+              <a class="button-ghost" href="/servicios">Volver a servicios</a>
+              <a
+                class="button"
+                href="mailto:hola@kontinu.io?subject=Solicitar%20propuesta%20Kontinu"
+              >
+                Solicitar propuesta
+              </a>
+            </div>
+          </article>
+        )
+      }
+    </div>
+  </section>
+
+  <CtaBand
+    title="¿Quieres convertir esta necesidad en una propuesta concreta?"
+    body="Si el desafío ya está claro o prefieres ordenar opciones antes de moverte, abrimos la conversación desde servicios."
+    actions={[
+      {
+        href: "mailto:hola@kontinu.io?subject=Solicitar%20propuesta%20Kontinu",
+        label: "Solicitar propuesta"
+      },
+      { href: "/servicios", label: "Volver a servicios", variant: "secondary" }
+    ]}
+  />
+</BaseLayout>

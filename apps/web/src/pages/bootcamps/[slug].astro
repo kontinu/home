@@ -1,0 +1,115 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import RichTextBlocks from "../../components/RichTextBlocks.astro";
+import { getBootcampBySlug, getBootcamps } from "../../lib/offering-content";
+
+export async function getStaticPaths() {
+  const bootcamps = await getBootcamps();
+
+  return bootcamps.map((bootcamp) => ({
+    params: { slug: bootcamp.slug }
+  }));
+}
+
+const slug = Astro.params.slug ?? "";
+const bootcamp = await getBootcampBySlug(slug);
+
+if (!bootcamp) {
+  Astro.response.status = 404;
+}
+
+const pageTitle = bootcamp ? `${bootcamp.title} | Bootcamps | Kontinu` : "Bootcamp | Kontinu";
+const pageDescription =
+  bootcamp?.summary ??
+  "Bootcamps técnicos corporativos de Kontinu para cloud, containers, Kubernetes y prácticas DevOps.";
+const cta = bootcamp?.primaryCta ?? {
+  label: "Solicitar información",
+  href: "mailto:hola@kontinu.io?subject=Informaci%C3%B3n%20sobre%20bootcamps%20Kontinu"
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <section class="section">
+    <div class="container-wide">
+      {
+        bootcamp ? (
+          <>
+            <div class="detail-hero surface-panel">
+              <div class="detail-hero__content">
+                <a class="detail-back-link" href="/bootcamps">Volver a bootcamps</a>
+                <span class="eyebrow">Bootcamp</span>
+                <h1 class="detail-title">{bootcamp.title}</h1>
+                {
+                  bootcamp.audience && (
+                    <p class="detail-meta">
+                      <strong>Ideal para:</strong> {bootcamp.audience}
+                    </p>
+                  )
+                }
+                <p class="detail-summary">{bootcamp.summary}</p>
+                <div class="detail-actions">
+                  <a class="button-secondary" href={cta.href}>{cta.label}</a>
+                  <a
+                    class="button"
+                    href="mailto:hola@kontinu.io?subject=Inscripci%C3%B3n%20a%20bootcamp%20Kontinu"
+                  >
+                    Inscribirme
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="detail-layout">
+              <article class="detail-card">
+                <RichTextBlocks value={bootcamp.body} />
+              </article>
+
+              <aside class="detail-side-card">
+                <h2 class="detail-side-card__title">Qué hace útil este formato</h2>
+                <ul class="detail-list">
+                  <li>El contenido se aterriza al contexto técnico y al nivel del equipo.</li>
+                  <li>Las sesiones combinan fundamentos, práctica guiada y conversación real.</li>
+                  <li>El objetivo es cambiar decisiones y hábitos, no solo completar una agenda.</li>
+                </ul>
+              </aside>
+            </div>
+          </>
+        ) : (
+          <article class="empty-state-card">
+            <h1 class="offering-card__title">No encontramos ese bootcamp.</h1>
+            <p class="offering-card__body">
+              Puedes volver al catálogo o escribirnos para revisar la ruta formativa que más se
+              ajuste a tu equipo.
+            </p>
+            <div class="offering-card__footer">
+              <a class="button-ghost" href="/bootcamps">Volver a bootcamps</a>
+              <a
+                class="button-secondary"
+                href="mailto:hola@kontinu.io?subject=Informaci%C3%B3n%20sobre%20bootcamps%20Kontinu"
+              >
+                Solicitar información
+              </a>
+            </div>
+          </article>
+        )
+      }
+    </div>
+  </section>
+
+  <CtaBand
+    title="¿Quieres revisar si este bootcamp encaja con tu equipo?"
+    body="Abrimos la conversación desde formación aplicada: podemos revisar objetivos, nivel, formato y siguientes pasos sin perder de vista el contexto operativo."
+    actions={[
+      {
+        href: "mailto:hola@kontinu.io?subject=Informaci%C3%B3n%20sobre%20bootcamps%20Kontinu",
+        label: "Solicitar información",
+        variant: "secondary"
+      },
+      {
+        href: "mailto:hola@kontinu.io?subject=Inscripci%C3%B3n%20a%20bootcamp%20Kontinu",
+        label: "Inscribirme"
+      }
+    ]}
+  />
+</BaseLayout>

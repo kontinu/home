@@ -1,6 +1,11 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import CtaBand from "../../components/CtaBand.astro";
 import SectionHeading from "../../components/SectionHeading.astro";
+import ServiceCard from "../../components/ServiceCard.astro";
+import { getServices } from "../../lib/offering-content";
+
+const services = await getServices();
 ---
 
 <BaseLayout
@@ -13,20 +18,69 @@ import SectionHeading from "../../components/SectionHeading.astro";
         eyebrow="Servicios"
         level="h1"
         title="Consultoría cloud y platform engineering para equipos que necesitan avanzar con criterio."
-        body="Esta sección ya existe como destino real del homepage. Aquí continuaremos construyendo la propuesta completa de servicios en la siguiente fase."
+        body="Assessment, acompañamiento hands-on y decisiones técnicas con lenguaje ejecutivo para equipos que necesitan ordenar, acelerar o escalar su operación."
       />
 
-      <article class="path-card">
-        <p class="path-card__body">
-          Por ahora dejamos un stub intencionalmente liviano para confirmar la ruta, mantener la
-          experiencia consistente con el nuevo shell y abrir el camino para el contenido detallado.
-        </p>
-
-        <div class="path-card__footer">
-          <span class="path-card__tag">Assessment · Roadmap · Delivery</span>
-          <a class="button" href="/">Volver al inicio</a>
+      <div class="collection-hero surface-panel">
+        <div class="collection-hero__content">
+          <p class="collection-hero__copy">
+            Entramos cuando hay presión real sobre plataformas, delivery o capacidad del equipo.
+            La meta no es agregar ruido, sino ayudar a priorizar, ejecutar y dejar más criterio
+            instalado.
+          </p>
+          <div class="collection-hero__actions">
+            <a
+              class="button"
+              href="mailto:hola@kontinu.io?subject=Solicitar%20propuesta%20Kontinu"
+            >
+              Solicitar propuesta
+            </a>
+            <a class="button-secondary" href="/#como-trabajamos">Cómo trabajamos</a>
+          </div>
         </div>
-      </article>
+
+        <ul class="service-list">
+          <li>Consultoría aplicada sobre cloud, Kubernetes y operación.</li>
+          <li>Roadmaps accionables y acompañamiento cercano al equipo.</li>
+          <li>Un camino claro desde assessment hasta delivery sostenible.</li>
+        </ul>
+      </div>
+
+      {
+        services.length > 0 ? (
+          <div class="offering-grid">
+            {services.map((service) => (
+              <ServiceCard service={service} />
+            ))}
+          </div>
+        ) : (
+          <article class="empty-state-card">
+            <h2 class="offering-card__title">Estamos preparando el portafolio de servicios.</h2>
+            <p class="offering-card__body">
+              Si todavía no ves una línea que describa tu necesidad, conversemos y armamos la
+              propuesta desde el caso real.
+            </p>
+            <a
+              class="button"
+              href="mailto:hola@kontinu.io?subject=Solicitar%20propuesta%20Kontinu"
+            >
+              Solicitar propuesta
+            </a>
+          </article>
+        )
+      }
     </div>
   </section>
+
+  <CtaBand
+    title="¿Necesitas una conversación técnica con foco en ejecución?"
+    body="Servicios está orientado a advisory y delivery: entramos para ordenar prioridades, acelerar decisiones y construir una base más confiable para el equipo."
+    actions={[
+      {
+        href: "mailto:hola@kontinu.io?subject=Solicitar%20propuesta%20Kontinu",
+        label: "Solicitar propuesta"
+      },
+      { href: "/bootcamps", label: "Ver bootcamps", variant: "secondary" }
+    ]}
+  />
 </BaseLayout>

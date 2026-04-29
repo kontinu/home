@@ -36,6 +36,7 @@ export const bootcampCardProjection = `
   title,
   "slug": slug.current,
   summary,
+  audience,
   ${ctaProjection}
 `;
 
