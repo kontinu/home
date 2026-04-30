@@ -1,25 +1,81 @@
 ---
 import { siteShell } from "../content/site-shell";
+import kontinuBadgeLogo from "../../../../img/kontinu-badge-logo.png";
 ---
 
 <header class="site-header">
   <div class="container-wide site-header__bar">
     <div class="site-header__brand">
       <a class="site-header__logo" href="/">
-        <span class="site-header__logo-mark" aria-hidden="true">K</span>
+        <span class="site-header__logo-mark" aria-hidden="true">
+          <img class="site-header__logo-badge" src={kontinuBadgeLogo.src} alt="" />
+        </span>
         <span>{siteShell.siteName}</span>
       </a>
       <p class="site-header__meta">{siteShell.tagLine}</p>
     </div>
 
-    <nav aria-label="Principal" class="site-header__nav">
-      {siteShell.nav.map((item) => (
-        <a href={item.href}>{item.label}</a>
-      ))}
-    </nav>
+    <button
+      class="site-header__toggle"
+      aria-expanded="false"
+      aria-controls="mobile-nav-panel"
+      aria-label="Menú"
+      type="button"
+    >
+      <span class="site-header__toggle-open" aria-hidden="true">&#9776;</span>
+      <span class="site-header__toggle-close" aria-hidden="true">&#10005;</span>
+    </button>
 
-    <div class="site-header__actions">
-      <a class="button-secondary" href="mailto:hola@kontinu.io">Hablemos</a>
+    <div id="mobile-nav-panel" class="site-header__panel">
+      <nav aria-label="Principal" class="site-header__nav">
+        {siteShell.nav.map((item) => (
+          <a href={item.href}>{item.label}</a>
+        ))}
+      </nav>
+
+      <div class="site-header__actions">
+        <a class="button-secondary" href="mailto:hola@kontinu.io">Hablemos</a>
+      </div>
     </div>
   </div>
 </header>
+
+<script>
+  const header = document.querySelector(".site-header") as HTMLElement | null;
+  const toggle = header?.querySelector<HTMLButtonElement>(".site-header__toggle");
+  const panel = document.getElementById("mobile-nav-panel");
+
+  if (header && toggle && panel) {
+    const siteHeader = header;
+    const toggleButton = toggle;
+    const navPanel = panel;
+
+    function openMenu(): void {
+      siteHeader.setAttribute("data-open", "");
+      toggleButton.setAttribute("aria-expanded", "true");
+    }
+
+    function closeMenu(): void {
+      siteHeader.removeAttribute("data-open");
+      toggleButton.setAttribute("aria-expanded", "false");
+    }
+
+    toggleButton.addEventListener("click", () => {
+      if (siteHeader.hasAttribute("data-open")) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    document.addEventListener("keydown", (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    });
+
+    navPanel.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+  }
+</script>

@@ -9,7 +9,7 @@ export type HeroMetric = {
 };
 
 export const siteShell = {
-  siteName: "Kontinu",
+  siteName: "kontinu",
   tagLine: "Cloud consulting y formación aplicada para equipos que necesitan avanzar sin improvisar.",
   nav: [
     { href: "/servicios", label: "Servicios" },
